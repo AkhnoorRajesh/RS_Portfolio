@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akhnoor Rajesh × Itharaju Sathyam — AI Full-Stack Studio</title>
+  <meta name="description" content="AI Full-Stack Development team building modern websites, web apps, AI agents, automation, and SaaS.">
+
+  <!-- Google Fonts: Instrument Serif & Geist / Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+
+  <!-- Ambient Loading & Cinematic Page Transition Curtain -->
+  <div class="loader-progress" id="loader-progress"></div>
+  <div class="page-transition-curtain" id="page-curtain"></div>
+
+  <!-- Minimal Transparent / Floating Navigation -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="/" class="brand-logo">
+        <span class="brand-name">AKHNOOR</span>
+        <span class="brand-divider">×</span>
+        <span class="brand-name">SATHYAM</span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/work" class="nav-link">WORK</a>
+        <a href="/services" class="nav-link">SERVICES</a>
+        <a href="/about" class="nav-link">ABOUT</a>
+        <a href="/contact" class="nav-link">CONTACT</a>
+      </nav>
+
+      <div class="header-cta-wrapper">
+        <a href="/contact" class="btn-nav">LET'S BUILD <span class="arrow">→</span></a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+          <span class="mobile-toggle-text">MENU</span>
+          <span class="mobile-toggle-bars">
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu-links">
+        <a href="/" class="mobile-link active">HOME</a>
+        <a href="/work" class="mobile-link">WORK</a>
+        <a href="/services" class="mobile-link">SERVICES</a>
+        <a href="/about" class="mobile-link">ABOUT</a>
+        <a href="/contact" class="mobile-link">CONTACT</a>
+      </div>
+      <div class="mobile-menu-footer">
+        <a href="/contact" class="btn btn-primary w-full">LET'S BUILD →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==============================================
+       PAGE 1: HOME HERO (Preserves 240-frame sequence)
+       ============================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-canvas-wrapper">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-gradient-overlay"></div>
+    </div>
+
+    <div class="hero-content-container">
+      
+      <!-- 0.8s - 1.8s: Eyebrow -->
+      <div class="hero-timeline-phase phase-eyebrow" id="phase-eyebrow">
+        <span class="eyebrow-tag">AI FULL-STACK DEVELOPMENT</span>
+      </div>
+
+      <!-- 1.8s - 3.8s: Names (Flanking Shoulders, Never Over Faces) -->
+      <div class="hero-timeline-phase phase-names" id="phase-names">
+        <div class="developer-tag tag-left">
+          <span class="dev-name">AKHNOOR RAJESH</span>
+          <span class="dev-role">AI FULL-STACK DEVELOPER</span>
+        </div>
+
+        <div class="developer-tag tag-right">
+          <span class="dev-name">ITHARAJU SATHYAM</span>
+          <span class="dev-role">AI FULL-STACK DEVELOPER</span>
+        </div>
+      </div>
+
+      <!-- 3.8s - 5.2s+: Headline, Capabilities, CTAs -->
+      <div class="hero-timeline-phase phase-headline" id="phase-headline">
+        <h1 class="hero-main-title">
+          WE BUILD DIGITAL<br>
+          <span class="serif-italic">PRODUCTS THAT THINK.</span>
+        </h1>
+
+        <p class="hero-capabilities-line" id="phase-capabilities">
+          WEBSITES · WEB APPS · AI AGENTS · AUTOMATION · SAAS
+        </p>
+
+        <div class="hero-cta-group" id="phase-actions">
+          <a href="/work" class="btn btn-primary">VIEW OUR WORK <span class="arrow">→</span></a>
+          <a href="/contact" class="btn btn-secondary">LET'S BUILD <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <!-- Bottom Bar & Replay -->
+      <div class="hero-bottom-bar" id="phase-bottom">
+        <div class="hero-duo-credit">
+          <span>AKHNOOR RAJESH</span>
+          <span class="credit-sep">×</span>
+          <span>ITHARAJU SATHYAM</span>
+        </div>
+
+        <div class="hero-timeline-controller">
+          <button class="replay-btn" id="replay-btn" title="Replay Cinematic Intro">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+            </svg>
+            <span>REPLAY INTRO</span>
+          </button>
+        </div>
+
+        <a href="#home-services" class="scroll-cue" aria-label="Scroll down">
+          <span class="scroll-label">EXPLORE</span>
+          <span class="scroll-arrow">↓</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==============================================
+       HOME SECTION 2: WHAT WE BUILD (Preview)
+       ============================================== -->
+  <section class="section-container" id="home-services">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-eyebrow">WHAT WE BUILD</span>
+        <h2 class="section-headline">From idea to intelligent product.</h2>
+        <p class="section-subtitle">
+          We design and build modern digital products combining exceptional interfaces, full-stack engineering and practical AI.
+        </p>
+      </div>
+
+      <div class="services-preview-grid">
+        <a href="/services" class="service-preview-card">
+          <div class="card-num">01</div>
+          <h3 class="card-title">WEBSITES</h3>
+          <p class="card-desc">High-performance responsive websites with strong visual identity and conversion-focused interactions.</p>
+          <span class="card-link">EXPLORE CAPABILITIES →</span>
+        </a>
+
+        <a href="/services" class="service-preview-card">
+          <div class="card-num">02</div>
+          <h3 class="card-title">WEB APPS</h3>
+          <p class="card-desc">Scalable full-stack applications with robust backend APIs, secure auth, and real-time UX.</p>
+          <span class="card-link">EXPLORE CAPABILITIES →</span>
+        </a>
+
+        <a href="/services" class="service-preview-card featured">
+          <div class="card-num">03</div>
+          <h3 class="card-title">AI AGENTS</h3>
+          <p class="card-desc">Intelligent autonomous agents capable of reasoning, tool dispatching, and contextual execution.</p>
+          <span class="card-link">EXPLORE CAPABILITIES →</span>
+        </a>
+
+        <a href="/services" class="service-preview-card">
+          <div class="card-num">04</div>
+          <h3 class="card-title">AUTOMATION</h3>
+          <p class="card-desc">Intelligent end-to-end workflows connecting systems to eliminate repetitive friction.</p>
+          <span class="card-link">EXPLORE CAPABILITIES →</span>
+        </a>
+
+        <a href="/services" class="service-preview-card">
+          <div class="card-num">05</div>
+          <h3 class="card-title">SAAS</h3>
+          <p class="card-desc">Production-grade software architectures engineered from zero to launch with integrated AI.</p>
+          <span class="card-link">EXPLORE CAPABILITIES →</span>
+        </a>
+      </div>
+
+      <div class="section-action-center">
+        <a href="/services" class="btn btn-secondary">VIEW ALL SERVICES & CAPABILITIES <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       HOME SECTION 3: SELECTED WORK (3 Featured)
+       ============================================== -->
+  <section class="section-container" id="home-work">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-eyebrow">SELECTED WORK</span>
+        <h2 class="section-headline">Things we've built.</h2>
+        <p class="section-subtitle">
+          A selection of digital products, AI systems and experiences we've designed and engineered.
+        </p>
+      </div>
+
+      <div class="projects-list">
+        <!-- Project 01 -->
+        <article class="project-editorial-card">
+          <div class="project-visual-wrapper">
+            <img src="assets/card_1_dashboard.jpg" alt="Intelligent Ops Platform" class="project-image" loading="lazy">
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta-top">
+              <span class="project-cat">SAAS · AI · WEB APP</span>
+              <span class="project-year">2026</span>
+            </div>
+            <h3 class="project-name">INTELLIGENT OPS PLATFORM</h3>
+            <p class="project-summary">
+              Full-stack autonomous operations platform featuring real-time telemetry, conversational agent queries, and high-throughput background automation.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">OpenAI</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+            <a href="/work" class="project-link">
+              <span>VIEW IN WORK SHOWCASE</span>
+              <span class="link-arrow">→</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 02 -->
+        <article class="project-editorial-card reverse">
+          <div class="project-visual-wrapper">
+            <img src="assets/card_2_3d.jpg" alt="Neural Interactive Canvas" class="project-image" loading="lazy">
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta-top">
+              <span class="project-cat">EXPERIENCE · 3D · WEBSITE</span>
+              <span class="project-year">2026</span>
+            </div>
+            <h3 class="project-name">NEURAL INTERACTIVE CANVAS</h3>
+            <p class="project-summary">
+              Cinematic visual experience combining custom WebGL shaders, camera choreography, and sub-millisecond scroll interactions designed for high engagement.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Three.js</span>
+              <span class="tag">WebGL</span>
+              <span class="tag">Framer Motion</span>
+            </div>
+            <a href="/work" class="project-link">
+              <span>VIEW IN WORK SHOWCASE</span>
+              <span class="link-arrow">→</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 03 -->
+        <article class="project-editorial-card">
+          <div class="project-visual-wrapper">
+            <img src="assets/card_3_arch.jpg" alt="Cognitive Workflow Engine" class="project-image" loading="lazy">
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta-top">
+              <span class="project-cat">AI AGENT · AUTOMATION</span>
+              <span class="project-year">2026</span>
+            </div>
+            <h3 class="project-name">COGNITIVE WORKFLOW ENGINE</h3>
+            <p class="project-summary">
+              Multi-agent reasoning infrastructure with dynamic tool dispatching, vector embeddings retrieval, and automated multi-step task execution.
+            </p>
+            <div class="project-tags">
+              <span class="tag">AI Agents</span>
+              <span class="tag">Vector DB</span>
+              <span class="tag">Python</span>
+              <span class="tag">Docker</span>
+            </div>
+            <a href="/work" class="project-link">
+              <span>VIEW IN WORK SHOWCASE</span>
+              <span class="link-arrow">→</span>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-action-center">
+        <a href="/work" class="btn btn-primary btn-large">VIEW ALL WORK <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       HOME SECTION 4: SHORT PROCESS
+       ============================================== -->
+  <section class="section-container" id="home-process">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-eyebrow">OUR PROCESS</span>
+        <h2 class="section-headline">From idea to production.</h2>
+        <p class="section-subtitle">A concise, disciplined path from first principle to deployed product.</p>
+      </div>
+
+      <div class="process-compact-row">
+        <div class="process-compact-node">
+          <span class="num">01</span>
+          <span class="label">DISCOVER</span>
+        </div>
+        <div class="process-sep">→</div>
+        <div class="process-compact-node">
+          <span class="num">02</span>
+          <span class="label">DESIGN</span>
+        </div>
+        <div class="process-sep">→</div>
+        <div class="process-compact-node">
+          <span class="num">03</span>
+          <span class="label">BUILD</span>
+        </div>
+        <div class="process-sep">→</div>
+        <div class="process-compact-node active">
+          <span class="num">04</span>
+          <span class="label">INTEGRATE AI</span>
+        </div>
+        <div class="process-sep">→</div>
+        <div class="process-compact-node">
+          <span class="num">05</span>
+          <span class="label">LAUNCH</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       HOME SECTION 5: FINAL CTA
+       ============================================== -->
+  <section class="section-container section-cta">
+    <div class="content-wrapper text-center">
+      <span class="section-eyebrow">START SOMETHING</span>
+      <h2 class="cta-headline">
+        Have an idea worth building?
+      </h2>
+      <p class="cta-subtitle">
+        Let's turn it into something real.
+      </p>
+      <div class="cta-buttons">
+        <a href="/contact" class="btn btn-primary btn-large">START A PROJECT <span class="arrow">→</span></a>
+        <a href="/work" class="btn btn-secondary btn-large">VIEW OUR WORK <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Minimal Footer -->
+  <footer class="site-footer">
+    <div class="content-wrapper footer-content">
+      <div class="footer-brand">
+        <span class="name">AKHNOOR RAJESH</span>
+        <span class="sep">×</span>
+        <span class="name">ITHARAJU SATHYAM</span>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/work">Work</a>
+        <a href="/services">Services</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div class="footer-tag">AI FULL-STACK DEVELOPMENT STUDIO</div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
