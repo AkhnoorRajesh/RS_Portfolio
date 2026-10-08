@@ -2900,3 +2900,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   outline: 2px solid var(--color-cream);
   outline-offset: 2px;
 }
+
+/* ==========================================================================
+   REACT BITS: SPLASH CURSOR (Fluid WebGL Canvas)
+   ========================================================================== */
+#fluid-cursor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#fluid {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
