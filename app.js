@@ -533,9 +533,50 @@
   }
 
   // ==========================================================================
+  // SERVICES CONTINUOUS CAROUSEL INTERACTION
+  // ==========================================================================
+  function initServicesCarousel() {
+    const carouselTrack = document.getElementById('services-carousel-track');
+    if (!carouselTrack) return;
+
+    const cards = carouselTrack.querySelectorAll('.service-preview-card');
+    let touchResumeTimer = null;
+
+    cards.forEach((card) => {
+      // Desktop mouse hover pause
+      card.addEventListener('mouseenter', () => {
+        carouselTrack.classList.add('is-paused');
+      });
+
+      card.addEventListener('mouseleave', () => {
+        carouselTrack.classList.remove('is-paused');
+      });
+
+      // Mobile touch interaction: hold to inspect, resume smoothly after release
+      card.addEventListener('touchstart', () => {
+        if (touchResumeTimer) clearTimeout(touchResumeTimer);
+        carouselTrack.classList.add('is-paused');
+      }, { passive: true });
+
+      card.addEventListener('touchend', () => {
+        if (touchResumeTimer) clearTimeout(touchResumeTimer);
+        touchResumeTimer = setTimeout(() => {
+          carouselTrack.classList.remove('is-paused');
+        }, 350);
+      }, { passive: true });
+
+      card.addEventListener('touchcancel', () => {
+        if (touchResumeTimer) clearTimeout(touchResumeTimer);
+        carouselTrack.classList.remove('is-paused');
+      }, { passive: true });
+    });
+  }
+
+  // ==========================================================================
   // INITIALIZATION
   // ==========================================================================
   initPageTransitions();
+  initServicesCarousel();
   window.addEventListener('scroll', handleScroll, { passive: true });
 
   let resizeDebounce;

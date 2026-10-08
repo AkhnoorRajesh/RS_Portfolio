@@ -742,12 +742,51 @@ canvas#hero-canvas {
 }
 
 /* ==========================================================================
-   HOME PAGE SECTION 2: SERVICES PREVIEW
+   HOME PAGE SECTION 2: SERVICES PREVIEW CAROUSEL (Infinite Seamless Marquee)
    ========================================================================== */
-.services-preview-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.2rem;
+.services-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1.5rem 0;
+  margin: -0.5rem 0 1.5rem 0;
+  touch-action: pan-y;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3.5%, black 96.5%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 3.5%, black 96.5%, transparent 100%);
+}
+
+.services-carousel-track {
+  display: flex;
+  width: max-content;
+  align-items: stretch;
+  will-change: transform;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.services-carousel-group {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+  flex-shrink: 0;
+  animation: serviceMarqueeLeft 42s linear infinite;
+  will-change: transform;
+}
+
+@keyframes serviceMarqueeLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+/* Pause horizontal movement when hovering ANY card (CSS :has & JS class fallback) */
+.services-carousel-track:has(.service-preview-card:hover) .services-carousel-group,
+.services-carousel-track.is-paused .services-carousel-group {
+  animation-play-state: paused;
 }
 
 .service-preview-card {
@@ -758,8 +797,17 @@ canvas#hero-canvas {
   border-radius: 2px;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s var(--transition-smooth);
   position: relative;
+  width: 320px;
+  flex: 0 0 320px;
+  min-height: 290px;
+  cursor: pointer;
+  touch-action: pan-y;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              background-color 0.3s ease,
+              box-shadow 0.35s ease;
+  will-change: transform;
 }
 
 .service-preview-card::before {
@@ -773,11 +821,13 @@ canvas#hero-canvas {
   transition: background-color 0.3s ease;
 }
 
+/* Subtle, refined hover feedback - no neon glow or flashy distractions */
 .service-preview-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--border-hover);
+  transform: translateY(-4px) scale(1.015);
+  border-color: rgba(237, 223, 180, 0.28);
   background: var(--bg-surface);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 16px var(--accent-red-glow);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
 
 .service-preview-card:hover::before {
@@ -791,6 +841,10 @@ canvas#hero-canvas {
 
 .service-preview-card.featured::before {
   background: var(--accent-red);
+}
+
+.service-preview-card.featured:hover {
+  border-color: rgba(185, 28, 45, 0.6);
 }
 
 .card-num {
@@ -826,7 +880,13 @@ canvas#hero-canvas {
   align-items: center;
   gap: 0.4rem;
   min-height: 44px;
-  transition: color 0.25s ease;
+  margin-top: auto;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.service-preview-card:hover .card-link {
+  color: #fff;
+  transform: translateX(4px);
 }
 
 /* ==========================================================================
@@ -2311,19 +2371,29 @@ canvas#hero-canvas {
     margin-bottom: 1.2rem;
   }
 
-  /* Home Services Preview: 1 Column Stacked */
-  .services-preview-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  /* Home Services Preview: Horizontal Continuous Moving Row on Tablet & Mobile */
+  .services-carousel-wrapper {
+    padding: 1.2rem 0;
+    margin: -0.3rem 0 1.2rem 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  }
+  .services-carousel-group {
+    gap: 1.2rem;
+    padding-right: 1.2rem;
+    animation-duration: 36s;
   }
   .service-preview-card {
+    width: 275px;
+    flex: 0 0 275px;
+    min-height: 270px;
     padding: 1.8rem 1.4rem;
   }
   .card-title {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
   }
   .card-desc {
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     margin-bottom: 1.2rem;
   }
 
@@ -2579,7 +2649,19 @@ canvas#hero-canvas {
     font-size: 1.95rem;
   }
 
-  .service-preview-card,
+  .services-carousel-group {
+    gap: 1rem;
+    padding-right: 1rem;
+    animation-duration: 33s;
+  }
+
+  .service-preview-card {
+    width: 260px;
+    flex: 0 0 260px;
+    min-height: 255px;
+    padding: 1.6rem 1.15rem;
+  }
+
   .developer-profile-card,
   .service-detail-block,
   .inquiry-card {
@@ -2729,7 +2811,19 @@ canvas#hero-canvas {
     letter-spacing: 0.08em;
   }
 
-  .service-preview-card,
+  .services-carousel-group {
+    gap: 0.85rem;
+    padding-right: 0.85rem;
+    animation-duration: 30s;
+  }
+
+  .service-preview-card {
+    width: 245px;
+    flex: 0 0 245px;
+    min-height: 240px;
+    padding: 1.35rem 0.9rem;
+  }
+
   .developer-profile-card,
   .service-detail-block,
   .inquiry-card {
@@ -2778,6 +2872,22 @@ canvas#hero-canvas {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .services-carousel-wrapper {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+
+  .services-carousel-group {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .services-carousel-group[aria-hidden="true"] {
+    display: none !important;
   }
 
   .page-transition-curtain {
