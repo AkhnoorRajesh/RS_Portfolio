@@ -110,7 +110,7 @@
             <h2 class="inquiry-title">START A PROJECT</h2>
             <p class="inquiry-subtitle">Tell us about what you want to build. We typically respond within 24 hours.</p>
 
-            <form class="inquiry-form" onsubmit="event.preventDefault(); document.getElementById('inquiry-success').style.display = 'block'; this.reset();">
+            <form class="inquiry-form" id="contact-inquiry-form" onsubmit="handleInquirySubmit(event)">
               <div class="form-group">
                 <label for="name" class="form-label">YOUR NAME / TEAM</label>
                 <input type="text" id="name" class="form-input" placeholder="e.g. Alex Vance" required>
@@ -151,13 +151,13 @@
               <button type="submit" class="btn btn-primary w-full">SEND PROJECT BRIEF <span class="arrow">→</span></button>
 
               <div id="inquiry-success" class="inquiry-success-message" style="display: none;">
-                Thank you. We have received your brief and will connect with you shortly.
+                Thank you! Your project brief has been sent to sathyaraj0819@gmail.com. We will review and connect with you shortly.
               </div>
             </form>
 
             <div class="inquiry-direct-fallback">
               <span class="direct-label">DIRECT INQUIRIES:</span>
-              <a href="mailto:hello@akhnoor-sathyam.studio" class="direct-email">hello@akhnoor-sathyam.studio</a>
+              <a href="mailto:sathyaraj0819@gmail.com" class="direct-email">sathyaraj0819@gmail.com</a>
             </div>
           </div>
         </div>
@@ -186,5 +186,33 @@
   </footer>
 
   <script src="app.js"></script>
+  <script>
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.querySelector('#name') ? form.querySelector('#name').value : '';
+      const email = form.querySelector('#email') ? form.querySelector('#email').value : '';
+      const typeEl = form.querySelector('input[name="projectType"]:checked');
+      const projectType = typeEl ? typeEl.value.toUpperCase() : 'GENERAL';
+      const details = form.querySelector('#details') ? form.querySelector('#details').value : '';
+
+      const subject = encodeURIComponent(`Project Brief: [${projectType}] from ${name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Project Type: ${projectType}\n\n` +
+        `Project Overview & Scope:\n${details}\n`
+      );
+
+      // Open email client with pre-filled inquiry directly to sathyaraj0819@gmail.com
+      window.location.href = `mailto:sathyaraj0819@gmail.com?subject=${subject}&body=${body}`;
+
+      const successEl = document.getElementById('inquiry-success');
+      if (successEl) {
+        successEl.style.display = 'block';
+      }
+      form.reset();
+    }
+  </script>
 </body>
 </html>
