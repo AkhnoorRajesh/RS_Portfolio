@@ -450,14 +450,17 @@
   // ==========================================================================
   // NAVIGATION & MOBILE MENU CONTROLLER
   // ==========================================================================
+  let isScrollTicking = false;
   function handleScroll() {
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-    if (siteHeader) {
-      if (scrollY > 50) {
-        siteHeader.classList.add('scrolled');
-      } else {
-        siteHeader.classList.remove('scrolled');
-      }
+    if (!isScrollTicking) {
+      window.requestAnimationFrame(() => {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+        if (siteHeader) {
+          siteHeader.classList.toggle('scrolled', scrollY > 50);
+        }
+        isScrollTicking = false;
+      });
+      isScrollTicking = true;
     }
   }
 
